@@ -1,0 +1,67 @@
+{
+  "SDUI Screen Definition": {
+    "prefix": "sdui-screen",
+    "body": [
+      "import type { SDUIScreen } from '../types';",
+      "",
+      "export const ${1:screenName}Screen: SDUIScreen = {",
+      "  id: '${2:screen_id}',",
+      "  title: '${3:Screen Title}',",
+      "  root: {",
+      "    type: 'stack',",
+      "    children: [",
+      "      {",
+      "        type: 'page_header',",
+      "        props: { title: '${3:Screen Title}', subtitle: '${4:Subtitle}' }",
+      "      },",
+      "      $0",
+      "    ]",
+      "  }",
+      "};"
+    ],
+    "description": "SDUI Screen skeleton"
+  },
+  "SDUI Stat Card": {
+    "prefix": "sdui-stat",
+    "body": [
+      "{",
+      "  type: 'stat_card',",
+      "  props: {",
+      "    label: '${1:Label}',",
+      "    value: '${2:0}',",
+      "    trend: { direction: '${3|up,down,neutral|}', label: '${4:+0%}' }",
+      "  }",
+      "}"
+    ],
+    "description": "SDUI stat card component"
+  },
+  "SDUI Grid": {
+    "prefix": "sdui-grid",
+    "body": [
+      "{",
+      "  type: 'grid',",
+      "  props: { cols: ${1|1,2,3,4|} },",
+      "  children: [",
+      "    $0",
+      "  ]",
+      "}"
+    ],
+    "description": "SDUI grid container"
+  },
+  "SDUI Data Table": {
+    "prefix": "sdui-table",
+    "body": [
+      "{",
+      "  type: 'data_table',",
+      "  props: {",
+      "    columns: [",
+      "      { key: '${1:id}', label: '${2:ID}', type: 'text' },",
+      "      { key: '${3:name}', label: '${4:Name}', type: 'text' }",
+      "    ],",
+      "    rows: []",
+      "  }",
+      "}"
+    ],
+    "description": "SDUI data table component"
+  }
+}
