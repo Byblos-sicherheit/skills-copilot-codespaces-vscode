@@ -1,10 +1,12 @@
-name: Step 0, Welcome
+name: Step 3, DHCP Lease Management
 
-# Triggers when a push is made to main.
-# Advances from step 0 to step 1.
+# Triggers when dhcp/reservations.conf is pushed to main.
+# Advances from step 3 to step 4.
 on:
   workflow_dispatch:
   push:
+    paths:
+      - "dhcp/reservations.conf"
     branches:
       - main
 
@@ -23,19 +25,22 @@ jobs:
     outputs:
       current_step: ${{ steps.get_step.outputs.current_step }}
 
-  on_start:
-    name: On start
+  on_dhcp_reservations:
+    name: On DHCP Reservations
     needs: get_current_step
-    if: ${{ !github.event.repository.is_template && needs.get_current_step.outputs.current_step == 0 }}
+    if: ${{ !github.event.repository.is_template && needs.get_current_step.outputs.current_step == 3 }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Check reservations contain hardware ethernet
+        uses: skills/action-check-file@v1
         with:
-          fetch-depth: 0
-      - name: Update to step 1
+          file: "dhcp/reservations.conf"
+          search: "hardware ethernet"
+      - name: Update to step 4
         uses: skills/action-update-step@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          from_step: 0
-          to_step: 1
+          from_step: 3
+          to_step: 4
