@@ -1,10 +1,12 @@
-name: Step 0, Welcome
+name: Step 1, DHCP Fundamentals
 
-# Triggers when a push is made to main.
-# Advances from step 0 to step 1.
+# Triggers when dhcp/README.md is pushed to main.
+# Advances from step 1 to step 2.
 on:
   workflow_dispatch:
   push:
+    paths:
+      - "dhcp/README.md"
     branches:
       - main
 
@@ -23,19 +25,22 @@ jobs:
     outputs:
       current_step: ${{ steps.get_step.outputs.current_step }}
 
-  on_start:
-    name: On start
+  on_dhcp_fundamentals:
+    name: On DHCP Fundamentals
     needs: get_current_step
-    if: ${{ !github.event.repository.is_template && needs.get_current_step.outputs.current_step == 0 }}
+    if: ${{ !github.event.repository.is_template && needs.get_current_step.outputs.current_step == 1 }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Check file contains DORA terms
+        uses: skills/action-check-file@v1
         with:
-          fetch-depth: 0
-      - name: Update to step 1
+          file: "dhcp/README.md"
+          search: "Discover"
+      - name: Update to step 2
         uses: skills/action-update-step@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          from_step: 0
-          to_step: 1
+          from_step: 1
+          to_step: 2
