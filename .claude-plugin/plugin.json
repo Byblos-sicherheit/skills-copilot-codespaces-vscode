@@ -1,0 +1,36 @@
+{
+  "name": "byblos-universal-suite",
+  "description": "Byblos Universal Skill Suite — a merged collection of engineering, infrastructure, free-services, animation, and meta-orchestration skills. Combines patterns from agent-skills, network-isp-systems-engineer, free-for-dev, text-to-lottie, harness, and task-observer into one cohesive Claude Code plugin.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Byblos Sicherheit & Facility Services",
+    "url": "https://github.com/byblos-sicherheit"
+  },
+  "homepage": "https://github.com/byblos-sicherheit/byblos-crm",
+  "repository": "https://github.com/byblos-sicherheit/byblos-crm",
+  "license": "MIT",
+  "keywords": [
+    "byblos",
+    "sicherheit",
+    "engineering",
+    "infrastructure",
+    "claude-code",
+    "skills",
+    "agent-team",
+    "meta-skill",
+    "harness",
+    "orchestration",
+    "crm",
+    "free-services"
+  ],
+  "skills": [
+    "byblos-master",
+    "engineering",
+    "infrastructure",
+    "free-services",
+    "animation",
+    "meta-harness",
+    "meta-observer",
+    "setup"
+  ]
+}
